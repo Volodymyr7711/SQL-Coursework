@@ -1,0 +1,106 @@
+INSERT INTO author (author_id , author) VALUES ( 1,'Чумаченко М.Г.');
+INSERT INTO author (author_id , author) VALUES ( 2,Романів Є.М.');
+INSERT INTO author (author_id , author) VALUES ( 3,'Пушкар М.С.');
+INSERT INTO author (author_id , author) VALUES ( 4,'Петровська І.О.');
+INSERT INTO author (author_id , author) VALUES ( 5,'Данилюк М.О.');
+
+INSERT INTO author (author_id , author) VALUES ( 6,'Примак Т.О.');
+INSERT INTO author (author_id , author) VALUES ( 7,'Сисак Т.М.');
+INSERT INTO author (author_id , author) VALUES ( 8,‘Волконський В.О.');
+INSERT INTO author (author_id , author) VALUES ( 9,'Пристайко С.О.');
+INSERT INTO author (author_id , author) VALUES ( 10,'Заєць П.О.');
+
+INSERT INTO author (author_id , author) VALUES (11, 'Сердюк К.В.');
+INSERT INTO author (author_id , author) VALUES (12, 'Вісник Н.А.');
+INSERT INTO author (author_id , author) VALUES (13, 'Баринюк К.Н.');
+INSERT INTO author (author_id , author) VALUES (14, 'Космачук Т.А.');
+INSERT INTO author (author_id , author) VALUES ( 15,'Ковальчук П.С.');
+
+INSERT INTO author (author_id , author) VALUES ( 16,'Приймак Т.О.');
+INSERT INTO author (author_id , author) VALUES (17, 'Кошулин М.Р.');
+INSERT INTO author (author_id , author) VALUES ( 18,'Храбатин К.Н.');
+INSERT INTO author (author_id , author) VALUES ( 19,'Вальков А.А.');
+INSERT INTO author (author_id , author) VALUES ( 20,'Зуєв К.О.');
+
+
+
+
+INSERT INTO author (author_id , author) VALUES (21, 'Пуйда В.В.');
+INSERT INTO author (author_id , author) VALUES ( 22,'Рущак В.С.');
+INSERT INTO author (author_id , author) VALUES ( 23,'Маліцин К.О.');
+INSERT INTO author (author_id , author) VALUES (24, 'Матійчук В.Н.');
+
+INSERT INTO author (author_id , author) VALUES ( 25,'Пальчак Л.Н.');
+INSERT INTO author (author_id , author) VALUES ( 26,'Махно К.Р.');
+INSERT INTO author (author_id , author) VALUES (27, ‘Токар П.Н.');
+INSERT INTO author (author_id , author) VALUES (28, 'Чорний Н.В.');
+INSERT INTO author (author_id , author) VALUES ( 29,‘Тикало Г.А.');
+INSERT INTO author (author_id , author) VALUES (30, 'Димюк Д.С.');
+
+-- Вставляємо контрольні дані в таблицю ‘Напрямок’ :
+INSERT INTO direction ( direct_id,direct_name) VALUES(1,'Економіка');
+
+INSERT INTO direction ( direct_id,direct_name) VALUES(2,'Мовознавство');
+
+INSERT INTO direction ( direct_id,direct_name) VALUES(3,'Компютерні Науки');
+
+
+-- Вставляємо контрольні дані в таблицю ‘Видавництво’ :
+INSERT INTO editor (editor_id,edition) VALUES(1,'КНЕУ Київ');
+
+INSERT INTO editor (editor_id,edition) VALUES(2,'Львів"Інтелект Захід"');
+
+INSERT INTO editor (editor_id,edition) VALUES(3,'Тернопіль"Факля');
+
+INSERT INTO editor (editor_id,edition) VALUES(4,'Івано-Франківськ ISBN');
+
+INSERT INTO editor (editor_id,edition) VALUES(5,'Львів Світ');
+
+INSERT INTO editor (editor_id,edition) VALUES(6,'ІФДТУНГ');
+
+INSERT INTO editor (editor_id,edition) VALUES(7,'Фоліо Харків');
+
+-- Вставляємо контрольні дані в таблицю ‘облік книг у бібліотеці’ :
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(1,'Економічний аналіз',232,1,1,1,76,'21-01-18');
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(2,'Контроль і Ревізія',320,1,2,2,56,'22-07-19');
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(3,'Фінансовий Облік',628,1,3,3,10,'23-04-17');
+
+
+
+
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(4,'Гроші.Фінанси.Кредит',300,1,4,4,27,'01-02-18');
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(5,'Економіка підприємниства',320,1,5,4,125,'04-12-19');
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(6,'Економіка підприємства',176,1,6,4,10,'22-04-18');
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(7, 'Сучасні ділові папери',539,2,7,4,87,'23-06-16');
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(8,'Латинська мова',352,2,8,5,49,'30-03-18’);
+INSERT INTO book(book_id,boOk_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(9,'Словник українських морфем',448,2,9,5,74, '31-01-09');
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(10,'Штучний інтелект',366,3,10,4,148,'12-02-13');
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(11,'Компютерні мережі',38,3,11,6,27,'23-11-06');
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(12,'Бази даних',304,3,12,1,145,'22-04-19');
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(13,'Програмування на Visual Basic',498,3,13,7,67,'22-04-18');
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(14,'Програмування на Delphi',519,3,14,7,24,'22-04-15');
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(15,'Програмування на Visual C++',726,3,15,7,28,'12-02-17');
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(16,'Архітектура компютера',222,3,16,4,58,'19-02-16');
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(17,'Латинська мова',344,2,17,7,77,'14-08-18');    
+
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(18,'Латинська мова',444,2,18,7,99,'12-07-19');
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(19,'Моя економіка',123,1,19,7,214,'18.02.10');                      
+
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(20,'Програмування мовою С++',400,3,20,1,340,'27.04.18');                      
+
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(21,'Архітектура компютера',384,3,21,1,776,'12.06.15');                      
+
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(22,'Ієрархічна структура даних',394,3,22,4,456,'12.05.19');                    
+
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(23,'Польська мова',348,2,23,4,752,'17.09.19');
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(24,'JAVA settings',399,3,24,1,158,'12.11.19');
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(25,'Англійська мова',452,2,25,1,450,'18.12.17');
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(26,'Програмування мовою Visual Basic',678,3,26,4,80,'19-06-14');               
+
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(27,'Латинська мова',174,2,27,4,56,'11-05-18');
+
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(28,'Програмування мовою Pascal',741,3,28,3,49,'16-12-11');
+
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(29,'Латинська мова',488,2,29,3,88,'17-05-19');
+
+INSERT INTO book(book_id,book_name,pages,direct_id,author_id,editor_id,number_of_books,first_day_of_book) VALUES(30,'Програмування мовою JAVA',551,3,30,1,75,'15-07-14');

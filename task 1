@@ -1,0 +1,64 @@
+5.3 Завдання 3 (Звіт)
+Виготовити звіт про розподіл сумарної кількості книжок видавництв по напрямках (у    
+рядках – назви видавництв, у стовпчиках – напрямки) (з використанням pl/pgSQL та SQL).      
+
+Розв’язок задачі
+CREATE OR REPLACE FUNCTION rozpodil_zvit()
+    RETURNS TEXT AS
+$$
+DECLARE
+    all_text     TEXT := ' ';
+    napram_name    RECORD;
+    vudav_name     RECORD;
+    record_sum     RECORD;
+    sum_pages    double precision;
+BEGIN
+    sum_pages = 0;
+
+    
+    all_text := repeat(' ', 80) || 'Звіт' || E'\n\n' || repeat(' ', 50) ;
+
+    FOR vudav_name IN SELECT * from editor
+    LOOP
+ all_text := all_text || vudav_name.edition || repeat(' ', 10);
+        END LOOP;
+
+  FOR napram_name IN SELECT *  from direction
+LOOP 
+       all_text := all_text || E'\n\n' ||  napram_name.direct_name || repeat(' ', 30);
+
+    FOR record_sum IN SELECT sum(CASE WHEN editor_id =1 THEN number_of_books
+        WHEN editor_id =2  THEN number_of_books
+        WHEN editor_id = 3  THEN number_of_books
+        WHEN editor_id = 4  THEN number_of_books
+        WHEN editor_id = 5  THEN number_of_books
+        WHEN editor_id = 6  THEN number_of_books
+        WHEN editor_id = 7  THEN number_of_books
+   ELSE 0
+    END)
+FROM book
+NATURAL JOIN editor
+NATURAL JOIN direction
+WHERE napram_name.direct_id = book.direct_id
+ GROUP BY editor
+
+
+
+
+
+
+
+
+
+
+
+
+LOOP
+all_text := all_text ||repeat(' ', 20) ||  record_sum.sum;
+
+END LOOP;
+END LOOP;
+    RETURN all_text;
+END
+$$ LANGUAGE plpgsql;
+SELECT rozpodil_zvit();

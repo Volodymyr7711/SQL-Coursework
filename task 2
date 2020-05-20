@@ -1,0 +1,45 @@
+5.4 Завдання 4 (Запит)
+Побудувати запит про сумарну кількість поступлених книжок у кожному кварталі минулого року.
+
+Розв’язок задачі
+
+SELECT SUM(CASE
+
+                 WHEN EXTRACT(QUARTER
+
+                              FROM first_day_of_book) = 1 THEN number_of_books
+
+             END) AS "Квартал 1",
+
+       SUM(CASE
+
+                 WHEN EXTRACT(QUARTER
+
+                              FROM first_day_of_book) = 2 THEN number_of_books
+
+             END) AS "Квартал 2",
+       SUM(CASE
+
+                 WHEN EXTRACT(QUARTER
+
+                              FROM first_day_of_book) = 3 THEN number_of_books
+
+       
+
+
+
+
+
+
+
+
+
+      END) AS "Квартал 3",
+       SUM(CASE
+
+                 WHEN EXTRACT(QUARTER
+
+                              FROM first_day_of_book) = 4 THEN number_of_books
+             END) AS "Квартал 4"
+
+FROM book ;

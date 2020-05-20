@@ -1,0 +1,43 @@
+5.5 Завдання 5 (Звіт)
+Виготовити звіт про недостатню кількість літератури в бібліотеці станом на поточну дату. У звіті передбачити такі відомості: назву книги, автори, напрямок, видавництво, кількість і дату поступлення. Занести у звіт ті книги, сумарна кількість яких менша за 1000 штук і які поступили до бібліотеки 10 і більше років тому. Підвести загальний підсумок (з використанням pl/pgSQL та SQL).
+
+
+Розв’язок задачі
+
+
+CREATE OR REPLACE FUNCTION rozpodil_zvit()
+    RETURNS TEXT AS
+$$
+DECLARE
+    all_text     TEXT := ' ';
+    napram_name    RECORD;
+    vudav_name     RECORD;
+    record_sum     RECORD;
+    sum_pages    double precision;
+BEGIN
+    sum_pages = 0;
+
+    
+    all_text := repeat(' ', 80) || 'Звіт' || E'\n\n' || repeat(' ', 50) ;
+
+
+
+
+
+FOR record_sum IN SELECT book_name,number_of_books,first_day_of_book,author,edition,direct_name FROM author
+INNER JOIN book ON author.author_id=book.author_id
+INNER JOIN editor ON editor.editor_id=book.editor_id
+INNER JOIN direction ON direction.direct_id=book.direct_id
+WHERE (EXTRACT(YEAR FROM first_day_of_book)BETWEEN 2000 AND 2010) AND number_of_books<=1000
+
+
+
+
+
+LOOP
+all_text := all_text ||rpad(record_sum.book_name,25,' ')|| rpad(to_char(record_sum.number_of_books,'999.99'),25,' ')||rpad(to_char(record_sum.first_day_of_book,'DD-MM-YYYY'),25,' ')||rpad(record_sum.author,25,' ')||rpad(record_sum.edition,25,' ')||rpad(record_sum.direct_name,25,' ') ||E'\n\n';
+END LOOP;
+    RETURN all_text;
+END
+$$ LANGUAGE plpgsql;
+SELECT rozpodil_zvit();

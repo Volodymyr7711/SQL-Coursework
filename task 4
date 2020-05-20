@@ -1,0 +1,43 @@
+5.8 Завдання 8 (Звіт)
+  Скласти програму для видачі звіту за умовою задачі 5, використати курсор.
+Розв’язок задачі:
+
+
+CREATE OR REPLACE FUNCTION rozpodil_zvit()
+    RETURNS TEXT AS
+$$
+DECLARE
+    all_text              TEXT := ' ';
+    book_name_rec         VARCHAR(30);             
+    number_of_books_i     INTEGER;
+    first_day_of_book_d     date;       
+    author_rec            VARCHAR(30);
+    edition_rec           VARCHAR(30);
+    direct_name_rec       VARCHAR(30);          
+    sum_pages              double precision;
+
+kursor CURSOR FOR
+
+SELECT book_name,number_of_books,first_day_of_book,author,edition,direct_name FROM author
+INNER JOIN book ON author.author_id=book.author_id
+INNER JOIN editor ON editor.editor_id=book.editor_id
+INNER JOIN direction ON direction.direct_id=book.direct_id
+WHERE (EXTRACT(YEAR FROM first_day_of_book)BETWEEN 2000 AND 2010) AND number_of_books<=1000;
+
+BEGIN
+    sum_pages = 0;
+    all_text := repeat(' ', 40) || 'Звіт з курсору' || E'\n\n' || repeat(' ', 50) ;
+
+OPEN kursor;
+LOOP
+FETCH kursor INTO book_name_rec,number_of_books_i,first_day_of_book_d,author_rec,edition_rec,direct_name_rec;
+exit when not found;
+
+        all_text := all_text || rpad( book_name_rec,25,' ') || rpad(to_char(number_of_books_i,'999.99'),25,' ')||rpad(to_char(first_day_of_book_d,'DD-MM-YYYY'),25,' ')||rpad( author_rec,25,' ')||rpad( edition_rec,25,' ')|| rpad( direct_name_rec,25,' ')||E'\n\n';                                                   
+                                                  
+END LOOP;
+CLOSE kursor;
+    RETURN all_text;
+END;
+$$ LANGUAGE plpgsql;
+SELECT rozpodil_zvit();

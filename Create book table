@@ -1,0 +1,57 @@
+5.1  Завдання 1 (створення таблиць, обмежень)
+Спроектувати та утворити базу даних Book  для зберігання та обробки інформації, яка містить такі дані про науково – технічну літературу бібліотеки: 1– номер книги;
+2– назва книги;
+3– автор;
+4– напрямок;
+5– кількість книжок у бібліотеці;
+6– кількість сторінок;
+7– дата поступлення в бібліотеку; 8– видавництво.
+Розв’язок
+--Створення таблиці напрямок:
+CREATE TABLE direction (direct_id INTEGER, direct_name VARCHAR(30));
+
+--Створення таблиці автор:
+CREATE TABLE author ( author_id SERIAL, author VARCHAR(80));
+
+--Створення таблиці облік книг у бібліотеці:
+CREATE TABLE book ( book_id SERIAL, book_name VARCHAR(80), pages INTEGER, direct_id INTEGER, author_id INTEGER, editor_id INTEGER, number_of_books SERIAL, first_day_of_book DATE ); 
+
+--Створення таблиці видавництво:
+CREATE TABLE editor ( editor_id INTEGER, edition VARCHAR(80));
+
+
+
+-- Додаємо обмеження до таблиць:
+ALTER TABLE direction ADD PRIMARY KEY(direct_id);
+
+ALTER TABLE author ADD PRIMARY KEY (author_id);
+
+ALTER TABLE book ADD PRIMARY KEY (book_id);
+
+ALTER TABLE book ADD CONSTRAINT cs_book FOREIGN KEY(author_id) REFERENCES author(author_id);
+
+ALTER TABLE editor ADD PRIMARY KEY (editor_id);
+
+ALTER TABLE book ADD CONSTRAINT cs_editor FOREIGN KEY(editor_id) REFERENCES editor(editor_id);
+
+ALTER TABLE book ADD CONSTRAINT cs_direct FOREIGN KEY(direct_id) REFERENCES direction(direct_id);
+
+Створення послідовності book1 і додавання обмеження DEFAULT до поля author_id таблиці author, використовуючи дану послідовність:
+
+create SEQUENCE book1 minvalue 0;
+ ALTER TABLE author ALTER author_id SET DEFAULT nextval('book1');
+
+Створення послідовності book2 і додавання обмеження DEFAULT до поля author_id таблиці book, використовуючи дану послідовність:
+
+create SEQUENCE book2 minvalue 0; 
+ALTER TABLE book ALTER author_id SET DEFAULT nextval('book2');
+
+Створення послідовності book3 і додавання обмеження DEFAULT до поля editor_id таблиці editor, використовуючи дану послідовність:
+
+create SEQUENCE book3 minvalue 0;
+ ALTER TABLE editor ALTER editor_id SET DEFAULT nextval('book3');
+
+Створення послідовності book4 і додавання обмеження DEFAULT до поля direct_id таблиці direction, використовуючи дану послідовність:
+
+create SEQUENCE book4 minvalue 0; 
+ALTER TABLE direction ALTER direct_id SET DEFAULT nextval('book4');
